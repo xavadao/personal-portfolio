@@ -2,7 +2,7 @@
 
 A standalone creative lifestyle portfolio demo built with Next.js, React, and Tailwind CSS.
 
-[Live demo](https://vibed-personal.xavainf.com)
+[Live demo](https://vibed-personal.xavainf.com) · [View source on GitHub](https://github.com/xavadao/personal-portfolio)
 
 ## Features
 
@@ -46,4 +46,12 @@ Portfolio identities, project descriptions, testimonials, and contact details ar
 
 ## Search and accessibility
 
-Every route exports its main content as HTML with a descriptive title, canonical URL, social sharing metadata, and truthful sample structured data. Robots, sitemap, and `llms.txt` describe the demo scope. Every page includes a keyboard accessible “Made with XavaInf” attribution link.
+Every route exports its main content as HTML with a descriptive title, canonical URL, social sharing metadata, and truthful sample structured data. Robots, sitemap, and `llms.txt` describe the demo scope. Every page includes a keyboard accessible “Made with XavaInf” badge fixed to the bottom-right while scrolling, plus a visible GitHub source link in the footer. The badge respects device safe areas and yields to the mobile menu.
+
+## Open source
+
+The source is publicly available at [xavadao/personal-portfolio](https://github.com/xavadao/personal-portfolio). Demo disclosures remain part of the page content.
+
+## License
+
+The code is available under the [MIT License](LICENSE). See [Third-party notices](THIRD_PARTY_NOTICES.md) for external imagery, fonts, and other assets; their rights are separate from the code license.
