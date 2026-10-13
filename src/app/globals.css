@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500&family=Dancing+Script:wght@400;500&display=swap");
+/* Tailwind v4 — config lives here only. There is no tailwind.config.js; do not add one. */
+@import "tailwindcss";
+
+/* From the Vite template's index.html <style>. */
+/* Minimal critical CSS - keep default tokens in sync with globals.css */
+:root {
+	color-scheme: light;
+	--background: 36 25% 97%;
+	--foreground: 24 15% 16%;
+}
+body {
+	background-color: hsl(var(--background));
+	color: hsl(var(--foreground));
+	min-height: 100vh;
+	margin: 0;
+}
+
+
+/*
+ * EDITORIAL PORTFOLIO — DESIGN SYSTEM
+ * Soft editorial palette. Light, airy, lifestyle journal aesthetic.
+ * Warm cream base, blush accents, charcoal text.
+ */
+
+:root {
+	color-scheme: light;
+
+	/* ── Warm Editorial Palette ── */
+	/* Base: warm cream #F7F5F2 */
+	--background: 36 25% 97%;
+	/* Surface: soft off-white */
+	--surface: 35 20% 94%;
+	/* Surface 2: soft beige panel */
+	--surface-2: 30 18% 90%;
+	/* Card: same as surface */
+	--card: 35 20% 94%;
+	--card-foreground: 24 15% 16%;
+
+	/* Text: warm charcoal */
+	--foreground: 24 15% 16%;
+
+	/* Primary: dusty rose / blush accent */
+	--primary: 15 25% 68%;
+	--primary-foreground: 24 15% 16%;
+
+	/* Secondary: warm stone */
+	--secondary: 30 12% 78%;
+	--secondary-foreground: 24 15% 16%;
+
+	/* Muted: soft beige */
+	--muted: 30 18% 90%;
+	--muted-foreground: 24 10% 48%;
+
+	/* Accent: dusty rose */
+	--accent: 15 25% 68%;
+	--accent-foreground: 24 15% 16%;
+
+	/* Blush panel background */
+	--blush: 20 30% 92%;
+
+	/* Utility */
+	--destructive: 0 62% 50%;
+	--destructive-foreground: 0 0% 98%;
+	--border: 30 15% 84%;
+	--border-strong: 30 12% 72%;
+	--input: 35 20% 94%;
+	--ring: 15 25% 68%;
+	--radius: 2px;
+
+	/* Motion — slow, soft, editorial */
+	--ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+	--ease-editorial: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	--duration-slow: 800ms;
+	--duration-medium: 500ms;
+	--duration-fast: 250ms;
+}
+
+@theme {
+	--color-background: hsl(var(--background));
+	--color-foreground: hsl(var(--foreground));
+	--color-surface: hsl(var(--surface));
+	--color-surface-2: hsl(var(--surface-2));
+	--color-card: hsl(var(--card));
+	--color-card-foreground: hsl(var(--card-foreground));
+	--color-primary: hsl(var(--primary));
+	--color-primary-foreground: hsl(var(--primary-foreground));
+	--color-secondary: hsl(var(--secondary));
+	--color-secondary-foreground: hsl(var(--secondary-foreground));
+	--color-muted: hsl(var(--muted));
+	--color-muted-foreground: hsl(var(--muted-foreground));
+	--color-accent: hsl(var(--accent));
+	--color-accent-foreground: hsl(var(--accent-foreground));
+	--color-blush: hsl(var(--blush));
+	--color-destructive: hsl(var(--destructive));
+	--color-destructive-foreground: hsl(var(--destructive-foreground));
+	--color-border: hsl(var(--border));
+	--color-border-strong: hsl(var(--border-strong));
+	--color-input: hsl(var(--input));
+	--color-ring: hsl(var(--ring));
+
+	/* Soft radius — barely there, not sharp */
+	--radius-sm: 2px;
+	--radius-md: 4px;
+	--radius-lg: 6px;
+
+	/* Typography */
+	--font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+	--font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+	--font-script: 'Dancing Script', cursive;
+	--font-mono: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+}
+
+@layer base {
+	*, *::before, *::after { box-sizing: border-box; }
+	html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+	body {
+		margin: 0;
+		background-color: hsl(var(--background));
+		color: hsl(var(--foreground));
+		font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+		font-weight: 300;
+		letter-spacing: 0.01em;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		overflow-x: hidden;
+		line-height: 1.7;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		font-family: 'Playfair Display', Georgia, serif;
+		font-weight: 400;
+		letter-spacing: -0.01em;
+		line-height: 1.1;
+		margin: 0;
+	}
+	p { margin: 0; line-height: 1.75; }
+	a { color: inherit; text-decoration: none; }
+	img { display: block; max-width: 100%; }
+	button { cursor: pointer; border: none; background: none; font-family: inherit; }
+	input, textarea { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+}
+
+/* ── Scroll Reveal — soft, slow, upward ── */
+.reveal {
+	opacity: 0;
+	transform: translateY(28px);
+	transition: opacity var(--duration-slow) var(--ease-editorial),
+	            transform var(--duration-slow) var(--ease-editorial);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.reveal-fade {
+	opacity: 0;
+	transition: opacity var(--duration-slow) var(--ease-editorial);
+}
+.reveal-fade.visible { opacity: 1; }
+
+.reveal-left {
+	opacity: 0;
+	transform: translateX(-20px);
+	transition: opacity var(--duration-slow) var(--ease-editorial),
+	            transform var(--duration-slow) var(--ease-editorial);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+	opacity: 0;
+	transform: translateX(20px);
+	transition: opacity var(--duration-slow) var(--ease-editorial),
+	            transform var(--duration-slow) var(--ease-editorial);
+}
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* Stagger delays — generous for editorial pacing */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-700 { transition-delay: 700ms; }
+.delay-800 { transition-delay: 800ms; }
+
+/* ── Image Hover — gentle zoom ── */
+.img-zoom { overflow: hidden; }
+.img-zoom img {
+	transition: transform 900ms var(--ease-editorial);
+	will-change: transform;
+}
+.img-zoom:hover img { transform: scale(1.05); }
+
+/* ── Underline Reveal — soft slide ── */
+.underline-reveal { position: relative; display: inline-block; }
+.underline-reveal::after {
+	content: '';
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background: currentColor;
+	opacity: 0.5;
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform var(--duration-medium) var(--ease-editorial);
+}
+.underline-reveal:hover::after { transform: scaleX(1); }
+
+/* ── Soft shadow utility ── */
+.shadow-editorial {
+	box-shadow: 0 4px 24px hsl(24 15% 16% / 0.06), 0 1px 4px hsl(24 15% 16% / 0.04);
+}
+.shadow-editorial-lg {
+	box-shadow: 0 12px 48px hsl(24 15% 16% / 0.08), 0 2px 8px hsl(24 15% 16% / 0.04);
+}
+
+/* ── Scrollbar — soft, minimal ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 2px; }
+
+/* ── Selection ── */
+::selection { background: hsl(var(--primary) / 0.18); color: hsl(var(--foreground)); }
+
+/* ── Page fade ── */
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: pageFadeIn 600ms var(--ease-editorial) both; }
+
+/* ── Hero override — never hidden ── */
+.hero-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* ── Focus styles ── */
+:focus-visible {
+  outline: 1px solid hsl(var(--primary));
+  outline-offset: 3px;
+}
+
+/* ── Responsive overrides ── */
+@media (max-width: 900px) {
+  .work-editorial-grid > * { grid-column: 1 / -1 !important; }
+}
+
+@media (max-width: 768px) {
+  .about-split { grid-template-columns: 1fr !important; }
+  .contact-layout { grid-template-columns: 1fr !important; }
+  .project-info { grid-template-columns: 1fr !important; }
+  footer { grid-template-columns: 1fr !important; text-align: center !important; }
+  footer nav { align-items: center !important; }
+}
