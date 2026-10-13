@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 /**
  * Attaches IntersectionObserver to all .reveal, .reveal-fade, .reveal-left
  * elements within the document, adding .visible when they enter the viewport.
+ * Pass a refresh key when filtering can mount new reveal elements.
  */
-export function useScrollReveal() {
+export function useScrollReveal(refreshKey?: string) {
   useEffect(() => {
     const selectors = '.reveal, .reveal-fade, .reveal-left';
     const elements = document.querySelectorAll<HTMLElement>(selectors);
@@ -28,5 +29,5 @@ export function useScrollReveal() {
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, []);
+  }, [refreshKey]);
 }

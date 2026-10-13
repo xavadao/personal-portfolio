@@ -2,17 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from '@/lib/router-compat';
-import { PROJECTS } from './WorkPage';
+import { ALL_PROJECTS } from '../data/projects';
 
 export default function WorkDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [activeImg, setActiveImg] = useState(0);
 
-  const project = PROJECTS.find((p) => p.id === id);
-  const currentIndex = PROJECTS.findIndex((p) => p.id === id);
-  const prevProject = currentIndex > 0 ? PROJECTS[currentIndex - 1] : null;
-  const nextProject = currentIndex < PROJECTS.length - 1 ? PROJECTS[currentIndex + 1] : null;
+  const project = ALL_PROJECTS.find((p) => p.id === id);
+  const currentIndex = ALL_PROJECTS.findIndex((p) => p.id === id);
+  const prevProject = currentIndex > 0 ? ALL_PROJECTS[currentIndex - 1] : null;
+  const nextProject = currentIndex < ALL_PROJECTS.length - 1 ? ALL_PROJECTS[currentIndex + 1] : null;
 
   // Scroll to top on project change
   useEffect(() => {
@@ -126,7 +126,7 @@ export default function WorkDetailPage() {
           letterSpacing: '0.1em',
           color: 'hsl(30 10% 94% / 0.5)',
         }}>
-          {String(currentIndex + 1).padStart(2, '0')} / {String(PROJECTS.length).padStart(2, '0')}
+          {String(currentIndex + 1).padStart(2, '0')} / {String(ALL_PROJECTS.length).padStart(2, '0')}
         </div>
 
         {/* Title overlay */}

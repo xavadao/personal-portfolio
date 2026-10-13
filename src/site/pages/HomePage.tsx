@@ -8,36 +8,7 @@ import { useScrollReveal } from '../components/useScrollReveal';
 const HERO_PORTRAIT = 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=900&q=90&auto=format&fit=crop&crop=faces,top';
 const HERO_ACCENT   = 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=85&auto=format&fit=crop';
 
-const WORK_ITEMS = [
-  {
-    id: 'lumiere',
-    title: 'Lumière Campaign',
-    category: 'Art Direction',
-    year: '2024',
-    img: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=85&auto=format&fit=crop',
-  },
-  {
-    id: 'maison',
-    title: 'Maison Édition',
-    category: 'Brand Direction',
-    year: '2024',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85&auto=format&fit=crop',
-  },
-  {
-    id: 'reverie',
-    title: 'Rêverie Editorial',
-    category: 'Photography',
-    year: '2023',
-    img: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&q=85&auto=format&fit=crop',
-  },
-  {
-    id: 'soleil',
-    title: 'Soleil Identity',
-    category: 'Visual Identity',
-    year: '2023',
-    img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=85&auto=format&fit=crop',
-  },
-];
+import { FEATURED_PROJECTS as WORK_ITEMS } from '../data/projects';
 
 const JOURNAL_ITEMS = [
   {
