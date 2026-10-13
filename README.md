@@ -1,4 +1,4 @@
-# Vibed Personal
+# Elara Voss — Creative & Lifestyle
 
 A standalone creative lifestyle portfolio demo built with Next.js, React, and Tailwind CSS.
 
@@ -43,3 +43,7 @@ pnpm deploy
 ## Demo limitations
 
 Portfolio identities, project descriptions, testimonials, and contact details are sample content. The contact form demonstrates a confirmation state in the browser; it does not send email or save submissions. Social and journal links are illustrative. Images load from Unsplash and fonts load from Google Fonts, so those services need to be reachable. There is no authentication, database, or backend API.
+
+## Search and accessibility
+
+Every route exports its main content as HTML with a descriptive title, canonical URL, social sharing metadata, and truthful sample structured data. Robots, sitemap, and `llms.txt` describe the demo scope. Every page includes a keyboard accessible “Made with XavaInf” attribution link.

@@ -55,14 +55,14 @@ export default function HomePage() {
   }, []);
 
   return (
-    <main style={{ background: 'hsl(36 25% 97%)', color: 'hsl(24 15% 16%)' }}>
+    <main data-page="home" id="main-content" tabIndex={-1} style={{ background: 'hsl(36 25% 97%)', color: 'hsl(24 15% 16%)' }}>
 
       {/* ══════════════════════════════════════════
           HERO — Editorial offset layout
           Left: large portrait image
           Right: asymmetric text block, overlapping
       ══════════════════════════════════════════ */}
-      <section
+      <section className="hero-section"
         ref={heroRef}
         style={{
           position: 'relative',
@@ -323,7 +323,7 @@ export default function HomePage() {
         </div>
 
         {/* Collage editorial grid — asymmetric placement */}
-        <div style={{
+        <div className="home-work-collage" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(12, 1fr)',
           gap: 'clamp(0.75rem, 2vw, 1.5rem)',

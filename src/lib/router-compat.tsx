@@ -72,18 +72,8 @@ export function useParams<T extends Record<string, string | undefined> = Record<
 }
 
 export function useLocation() {
-	const pathname = usePathname() ?? '/';
-	const search = useNextSearchParams()?.toString() ?? '';
-	return useMemo(
-		() => ({
-			pathname,
-			search: search ? `?${search}` : '',
-			hash: typeof window === 'undefined' ? '' : window.location.hash,
-			state: null as unknown,
-			key: `${pathname}?${search}`,
-		}),
-		[pathname, search],
-	);
+  const pathname = usePathname() ?? '/';
+  return useMemo(() => ({ pathname }), [pathname]);
 }
 
 type NavigateOptions = { replace?: boolean; state?: unknown; preventScrollReset?: boolean };

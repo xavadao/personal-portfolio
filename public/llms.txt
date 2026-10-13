@@ -1,0 +1,12 @@
+# Elara Voss — Creative & Lifestyle
+
+> A creative lifestyle portfolio demo with art direction, brand projects, a journal, and a contact experience.
+
+## Pages
+- [Home](https://vibed-personal.xavainf.com/)
+- [/about](https://vibed-personal.xavainf.com/about)
+- [/work](https://vibed-personal.xavainf.com/work)
+- [/contact](https://vibed-personal.xavainf.com/contact)
+
+## Scope
+This is a sample portfolio. Identities, achievements, projects, and business details are illustrative. The contact form does not send or save messages. Project pages describe bundled sample work; this site has no live business API or booking service.

@@ -33,7 +33,7 @@ export default function WorkDetailPage() {
 
   if (!project) {
     return (
-      <main style={{
+      <main data-page="project" id="main-content" tabIndex={-1} style={{
         background: 'hsl(0 0% 4%)',
         color: 'hsl(30 10% 94%)',
         paddingTop: '72px',
@@ -273,6 +273,8 @@ export default function WorkDetailPage() {
           {project.images.map((img, i) => (
             <button
               key={i}
+              aria-label={`Show image ${i + 1} of ${project.title}`}
+              aria-pressed={activeImg === i}
               onClick={() => setActiveImg(i)}
               style={{
                 padding: 0,

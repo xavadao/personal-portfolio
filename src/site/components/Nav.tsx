@@ -9,6 +9,25 @@ export default function Nav() {
   const location = useLocation();
 
   useEffect(() => {
+    if (!menuOpen) return;
+    const menu = document.getElementById('mobile-navigation');
+    const links = Array.from(menu?.querySelectorAll<HTMLAnchorElement>('a[href]') ?? []);
+    const previous = document.activeElement as HTMLElement | null;
+    const oldOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    links[0]?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') { event.preventDefault(); setMenuOpen(false); }
+      if (event.key === 'Tab' && links.length) {
+        if (event.shiftKey && document.activeElement === links[0]) { event.preventDefault(); links.at(-1)?.focus(); }
+        else if (!event.shiftKey && document.activeElement === links.at(-1)) { event.preventDefault(); links[0].focus(); }
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = oldOverflow; previous?.focus(); };
+  }, [menuOpen]);
+
+  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -72,7 +91,7 @@ export default function Nav() {
   return (
     <>
       {/* ── Main nav bar ── */}
-      <nav
+      <nav className="personal-navigation"
         style={{
           position: 'fixed',
           top: 0,
@@ -103,7 +122,7 @@ export default function Nav() {
         </div>
 
         {/* Wordmark — centered */}
-        <Link
+        <Link className="nav-primary-wordmark"
           to="/"
           style={{
             fontFamily: "'Playfair Display', Georgia, serif",
@@ -150,6 +169,8 @@ export default function Nav() {
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
           className="nav-mobile-btn"
           style={{
             display: 'none',
@@ -183,7 +204,7 @@ export default function Nav() {
       </nav>
 
       {/* ── Mobile overlay — soft cream ── */}
-      <div
+      <div id="mobile-navigation" role="navigation" aria-label="Mobile navigation" aria-hidden={!menuOpen} inert={!menuOpen}
         style={{
           position: 'fixed',
           inset: 0,
@@ -254,7 +275,9 @@ export default function Nav() {
 
       <style>{`
         @media (max-width: 768px) {
-          .nav-desktop { display: none !important; }
+          .nav-desktop, .nav-primary-wordmark { display: none !important; }
+          .personal-navigation { grid-template-columns: 1fr auto !important; }
+          .nav-mobile-wordmark { grid-column: auto !important; }
           .nav-mobile-btn { display: flex !important; }
           .nav-mobile-wordmark { display: block !important; }
         }
