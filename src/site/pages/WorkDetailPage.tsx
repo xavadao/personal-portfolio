@@ -23,6 +23,7 @@ export default function WorkDetailPage() {
   // Keyboard navigation
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (e.defaultPrevented || document.querySelector('#mobile-navigation[aria-hidden="false"]')) return;
       if (e.key === 'ArrowRight' && nextProject) navigate(`/work/${nextProject.id}`);
       if (e.key === 'ArrowLeft' && prevProject) navigate(`/work/${prevProject.id}`);
       if (e.key === 'Escape') navigate('/work');
@@ -64,7 +65,7 @@ export default function WorkDetailPage() {
   }
 
   return (
-    <main style={{ background: 'hsl(0 0% 4%)', color: 'hsl(30 10% 94%)', paddingTop: '72px' }}>
+    <main data-page="project" id="main-content" tabIndex={-1} style={{ background: 'hsl(0 0% 4%)', color: 'hsl(30 10% 94%)', paddingTop: '72px' }}>
 
       {/* ── HERO IMAGE ── */}
       <div style={{
